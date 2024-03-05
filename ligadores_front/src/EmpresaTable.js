@@ -7,8 +7,23 @@ function EmpresaTable() {
   const [banco, setBanco] = useState(''); // Estado para armazenar o banco selecionado
 
   const bancos = ['Itau', 'BB'];
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [empresasPerPage, setEmpresasPerPage] = useState(5); // Você pode ajustar esse número
+  const [statusFilter, setStatusFilter] = useState('');
+  const [scoreFilter, setScoreFilter] = useState('');
   
   const navigate = useNavigate(); // Hook para navegar programaticamente
+
+  const indexOfLastEmpresa = currentPage * empresasPerPage;
+  const indexOfFirstEmpresa = indexOfLastEmpresa - empresasPerPage;
+  const currentEmpresas = empresas
+    .filter(empresa => {
+      return empresa.status.includes(statusFilter) && (!scoreFilter || empresa.score === Number(scoreFilter));
+    })
+    .slice(indexOfFirstEmpresa, indexOfLastEmpresa);
+
 
   // Função para navegar até a página de detalhes da empresa
   const handleRowClick = (cnpj) => {
@@ -45,6 +60,37 @@ function EmpresaTable() {
           ))}
         </select>
       </div>
+      <div className="flex gap-4 mb-4">
+        <div>
+          <label htmlFor="statusFilter">Filtrar por Status</label>
+          <select
+            id="statusFilter"
+            value={statusFilter}
+            onChange={e => setStatusFilter(e.target.value)}
+            className="border rounded p-2"
+          >
+            <option value="">Todos</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Retornar">Retornar</option>
+            <option value="Encaminhado">Encaminhado</option>
+            <option value="Sucesso">Sucesso</option>
+            <option value="Perdido">Perdido</option>
+            <option value="Cadastro Incorreto">Cadastro Incorreto</option>
+            <option value="Não Possui Conta">Não Possui Conta</option>
+          </select>
+
+        </div>
+        <div>
+          <label htmlFor="scoreFilter">Filtrar por Score</label>
+          <input
+            type="number"
+            id="scoreFilter"
+            value={scoreFilter}
+            onChange={e => setScoreFilter(e.target.value)}
+            className="border rounded p-2"
+          />
+        </div>
+      </div>
       <table className="w-full table-auto text-sm text-left text-gray-900">
         <thead className="text-xs text-gray-900 uppercase bg-stone-500 bg-gray-300 ">
           <tr>
@@ -77,6 +123,24 @@ function EmpresaTable() {
           ))}
         </tbody>
       </table>
+      <div className="py-2">
+        <div className="flex justify-between">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage <= 1}
+            className="px-4 py-2 mx-1 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 disabled:opacity-50"
+          >
+            Anterior
+          </button>
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentEmpresas.length < empresasPerPage}
+            className="px-4 py-2 mx-1 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 disabled:opacity-50"
+          >
+            Próximo
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
