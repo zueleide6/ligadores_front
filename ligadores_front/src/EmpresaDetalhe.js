@@ -12,7 +12,7 @@ function EmpresaDetalhe() {
     const fetchData = async () => {
         const empresaRes = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}`);
         setEmpresa(empresaRes.data);
-        const atendimentoRes = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimentos`);
+        const atendimentoRes = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`);
         setAtendimentos(atendimentoRes.data);
     };
 
