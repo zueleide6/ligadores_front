@@ -135,7 +135,7 @@ function EmpresaTable() {
           </tr>
         </thead>
         <tbody>
-          {empresas.map((empresa) => (
+          {console.log("Empresas:"+empresas) && empresas.map((empresa) => (
             <tr
               key={empresa.cnpj}
               className="text-gray-900 bg-white border-b even:bg-stone-200 odd:bg-stone-50  dark:hover:bg-sky-300 cursor-pointer"
