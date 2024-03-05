@@ -9,15 +9,6 @@ function EmpresaTable() {
 
   const navigate = useNavigate(); // Hook para navegar programaticamente
 
-  useEffect(() => {
-    const fetchEmpresas = async () => {
-      const { data } = await axios.get('https://coral-app-7ytww.ondigitalocean.app/empresa'); // Ajuste a URL conforme necessário
-      setEmpresas(data);
-    };
-
-    fetchEmpresas();
-  }, []);
-
   // Função para navegar até a página de detalhes da empresa
   const handleRowClick = (cnpj) => {
     navigate(`/empresa/${cnpj}`); // Ajuste a rota conforme necessário
