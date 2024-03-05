@@ -10,7 +10,7 @@ function EmpresaTable() {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [empresasPerPage, setEmpresasPerPage] = useState(5); // Você pode ajustar esse número
+  const [empresasPerPage, setEmpresasPerPage] = useState(25); // Você pode ajustar esse número
   const [statusFilter, setStatusFilter] = useState('');
   const [scoreFilter, setScoreFilter] = useState('');
   
@@ -19,10 +19,30 @@ function EmpresaTable() {
   const indexOfLastEmpresa = currentPage * empresasPerPage;
   const indexOfFirstEmpresa = indexOfLastEmpresa - empresasPerPage;
   const currentEmpresas = empresas
-    .filter(empresa => {
-      return empresa.status.includes(statusFilter) && (!scoreFilter || empresa.score === Number(scoreFilter));
-    })
-    .slice(indexOfFirstEmpresa, indexOfLastEmpresa);
+  .filter(empresa => {
+    let scoreCondition = true; // Assume true by default
+
+    switch (scoreFilter) {
+      case "<25":
+        scoreCondition = empresa.score < 25;
+        break;
+      case "25-50":
+        scoreCondition = empresa.score >= 25 && empresa.score <= 50;
+        break;
+      case "51-70":
+        scoreCondition = empresa.score >= 51 && empresa.score <= 70;
+        break;
+      case ">70":
+        scoreCondition = empresa.score > 70;
+        break;
+      default:
+        // Keep scoreCondition true for "Todos"
+        break;
+    }
+
+    return empresa.status.includes(statusFilter) && scoreCondition;
+  })
+  .slice(indexOfFirstEmpresa, indexOfLastEmpresa);
 
 
   // Função para navegar até a página de detalhes da empresa
@@ -82,13 +102,18 @@ function EmpresaTable() {
         </div>
         <div>
           <label htmlFor="scoreFilter">Filtrar por Score</label>
-          <input
-            type="number"
+          <select
             id="scoreFilter"
             value={scoreFilter}
             onChange={e => setScoreFilter(e.target.value)}
             className="border rounded p-2"
-          />
+          >
+            <option value="">Todos</option>
+            <option value="<25">25-</option>
+            <option value="25-50">26-50</option>
+            <option value="51-70">51-70</option>
+            <option value=">70">70+</option>
+          </select>
         </div>
       </div>
       <table className="w-full table-auto text-sm text-left text-gray-900">
