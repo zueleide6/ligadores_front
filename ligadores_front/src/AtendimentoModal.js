@@ -27,8 +27,13 @@ const AtendimentoModal = ({ isOpen, onClose, onSubmit }) => {
           <div>
             <label htmlFor="status">Status</label>
             <select id="status" value={status} onChange={(e) => setStatus(e.target.value)} className="border rounded p-2 w-full">
-              <option value="Pendente">Pendente</option>
-              {/* Adicione outras opções aqui */}
+                <option value="Pendente">Pendente</option>
+                <option value="Retornar">Retornar</option>
+                <option value="Encaminhado">Encaminhado</option>
+                <option value="Sucesso">Sucesso</option>
+                <option value="Perdido">Perdido</option>
+                <option value="Cadastro Incorreto">Cadastro Incorreto</option>
+                <option value="Não Possui Conta">Não Possui Conta</option>
             </select>
           </div>
           <div>
