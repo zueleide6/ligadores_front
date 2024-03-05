@@ -12,7 +12,7 @@ function EmpresaTable() {
 
   // Função para navegar até a página de detalhes da empresa
   const handleRowClick = (cnpj) => {
-    await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}`);
+    navigate(`/empresa/${cnpj}`); // Ajuste a rota conforme necessário
   };
 
   useEffect(() => {
