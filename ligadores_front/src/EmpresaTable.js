@@ -5,24 +5,15 @@ import { useNavigate } from 'react-router-dom'; // Usado para navegação
 function EmpresaTable() {
   const [empresas, setEmpresas] = useState([]);
   const [banco, setBanco] = useState(''); // Estado para armazenar o banco selecionado
-  const [bancos, setBancos] = useState([]); // Estado para a lista de bancos
 
+  const bancos = ['Itau', 'BB'];
+  
   const navigate = useNavigate(); // Hook para navegar programaticamente
 
   // Função para navegar até a página de detalhes da empresa
   const handleRowClick = (cnpj) => {
     navigate(`/empresa/${cnpj}`); // Ajuste a rota conforme necessário
   };
-
-  useEffect(() => {
-    // Função para buscar bancos disponíveis
-    const fetchBancos = async () => {
-      const { data: bancosDisponiveis } = await axios.get('https://coral-app-7ytww.ondigitalocean.app/empresa/bancos');
-      setBancos(bancosDisponiveis);
-    };
-
-    fetchBancos();
-  }, []);
 
   useEffect(() => {
     // Atualizada para incluir filtro de banco
@@ -49,7 +40,7 @@ function EmpresaTable() {
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option value="">Itau</option>
-          {bancos.map((banco) => (
+     {bancos.map((banco) => (
             <option key={banco} value={banco}>{banco}</option>
           ))}
         </select>
