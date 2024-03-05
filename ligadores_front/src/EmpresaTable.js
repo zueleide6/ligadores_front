@@ -11,7 +11,7 @@ function EmpresaTable() {
 
   useEffect(() => {
     const fetchEmpresas = async () => {
-      const { data } = await axios.get('https://congenial-space-spork-qvj9w7w959cxx94-3333.app.github.dev/empresa'); // Ajuste a URL conforme necessário
+      const { data } = await axios.get('https://coral-app-7ytww.ondigitalocean.app/empresa'); // Ajuste a URL conforme necessário
       setEmpresas(data);
     };
 
@@ -26,7 +26,7 @@ function EmpresaTable() {
   useEffect(() => {
     // Função para buscar bancos disponíveis
     const fetchBancos = async () => {
-      const { data: bancosDisponiveis } = await axios.get('https://congenial-space-spork-qvj9w7w959cxx94-3333.app.github.dev/empresa/bancos');
+      const { data: bancosDisponiveis } = await axios.get('https://coral-app-7ytww.ondigitalocean.app/empresa/bancos');
       setBancos(bancosDisponiveis);
     };
 
@@ -36,7 +36,7 @@ function EmpresaTable() {
   useEffect(() => {
     // Atualizada para incluir filtro de banco
     const fetchEmpresas = async () => {
-      const { data } = await axios.get(`https://congenial-space-spork-qvj9w7w959cxx94-3333.app.github.dev/empresa?banco=${banco}`);
+      const { data } = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa?banco=${banco}`);
       setEmpresas(data);
     };
 
