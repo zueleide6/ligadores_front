@@ -6,7 +6,7 @@ function AtendimentoModal({ empresaId, onAtendimentoAdded }) {
     const [atendimentoInfo, setAtendimentoInfo] = useState({ /* estado inicial */ });
 
     const handleSave = async () => {
-        await axios.post(`https://congenial-space-spork-qvj9w7w959cxx94-3333.app.github.dev/empresa/${empresaId}/atendimento`, atendimentoInfo);
+        await axios.post(`https://coral-app-7ytww.ondigitalocean.app/empresa/${empresaId}/atendimento`, atendimentoInfo);
         onAtendimentoAdded();
         setShowModal(false);
     };
