@@ -8,7 +8,7 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<EmpresaTable />} />
-        <Route path="/empresas/:cnpj" element={<EmpresaDetalhes />} /> {/* Nova rota para detalhes da empresa */}
+        <Route path="/empresa/:cnpj" element={<EmpresaDetalhes />} /> {/* Nova rota para detalhes da empresa */}
       </Routes>
     </Router>
   );
