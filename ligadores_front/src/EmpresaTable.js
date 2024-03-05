@@ -20,7 +20,7 @@ function EmpresaTable() {
 
   // Função para navegar até a página de detalhes da empresa
   const handleRowClick = (cnpj) => {
-    navigate(`/empresa/${empresaId}`); // Ajuste a rota conforme necessário
+    navigate(`/empresa/${cnpj}`); // Ajuste a rota conforme necessário
   };
 
   useEffect(() => {
