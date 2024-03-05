@@ -10,9 +10,9 @@ function EmpresaDetalhe() {
     const { cnpj } = useParams(); // Captura o CNPJ da URL
 
     const fetchData = async () => {
-        const empresaRes = await axios.get(`https://congenial-space-spork-qvj9w7w959cxx94-3333.app.github.dev/empresa/${cnpj}`);
+        const empresaRes = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}`);
         setEmpresa(empresaRes.data);
-        const atendimentoRes = await axios.get(`https://congenial-space-spork-qvj9w7w959cxx94-3333.app.github.dev/empresa/${cnpj}/atendimentos`);
+        const atendimentoRes = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimentos`);
         setAtendimentos(atendimentoRes.data);
     };
 
