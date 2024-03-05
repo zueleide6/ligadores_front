@@ -18,10 +18,15 @@ function EmpresaTable() {
 
   const indexOfLastEmpresa = currentPage * empresasPerPage;
   const indexOfFirstEmpresa = indexOfLastEmpresa - empresasPerPage;
+
+
   const currentEmpresas = empresas
   .filter(empresa => {
+    // Garante que status não seja undefined antes de chamar includes
+    const statusCondition = empresa.status ? empresa.status.includes(statusFilter) : false;
+    
     let scoreCondition = true; // Assume true by default
-
+    
     switch (scoreFilter) {
       case "<25":
         scoreCondition = empresa.score < 25;
@@ -36,11 +41,11 @@ function EmpresaTable() {
         scoreCondition = empresa.score > 70;
         break;
       default:
-        // Keep scoreCondition true for "Todos"
+        // Mantém scoreCondition true para "Todos"
         break;
     }
 
-    return empresa.status.includes(statusFilter) && scoreCondition;
+    return statusCondition && scoreCondition;
   })
   .slice(indexOfFirstEmpresa, indexOfLastEmpresa);
 
@@ -142,8 +147,8 @@ function EmpresaTable() {
               <td className="py-4 px-6">{empresa.capSocial}</td>
               <td className="py-4 px-6">{empresa.email}</td>
               <td className="py-4 px-6">{empresa.telefones}</td>
-              <td className="py-4 px-6">{empresa.status}</td>
-              <td className="py-4 px-6">{empresa.score}</td>
+              <td className="py-4 px-6">{empresa.atendimento.status}</td>
+              <td className="py-4 px-6">{empresa.atendimento.score}</td>
             </tr>
           ))}
         </tbody>
