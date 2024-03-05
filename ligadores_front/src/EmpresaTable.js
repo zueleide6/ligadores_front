@@ -18,7 +18,7 @@ function EmpresaTable() {
   useEffect(() => {
     // Atualizada para incluir filtro de banco
     const fetchEmpresas = async () => {
-      const { data } = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa?banco=${banco}`);
+      const { data } = await axios.get('https://coral-app-7ytww.ondigitalocean.app/empresa');
       setEmpresas(data);
     };
 
