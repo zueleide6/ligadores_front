@@ -162,6 +162,7 @@ function EmpresaTable() {
           >
             Anterior
           </button>
+          Nº de registros: {empresas.length}
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentEmpresas.length < empresasPerPage}
