@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'; // Usaremos para capturar o ID/CNPJ da empresa da URL
 import AtendimentoModal from './AtendimentoModal'; // Componente do modal para adicionar novo atendimento
+import { useNavigate } from 'react-router-dom'; // Usado para navegação
 
 function EmpresaDetalhe() {
     const [empresa, setEmpresa] = useState(null);
@@ -10,7 +11,12 @@ function EmpresaDetalhe() {
     const { cnpj } = useParams(); // Captura o CNPJ da URL
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-
+    const navigate = useNavigate(); // Hook para navegar programaticamente
+    
+    const handleClickVoltar = () => {
+        navigate(`/empresa`); // Ajuste a rota conforme necessário
+    };
+    
     const fetchData = async () => {
         const empresaRes = await axios.get(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}`);
         setEmpresa(empresaRes.data);
@@ -29,6 +35,7 @@ function EmpresaDetalhe() {
 
     return (
         <div className='mx-auto max-w-7xl py-12 sm:px-6 lg:px-8 bg-stone-200 '>
+        <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={handleClickVoltar}>Voltar</button>
         <div className="px-4 sm:px-0">
             <h3 className="text-base font-semibold leading-7 text-gray-900">Detalhe da Empresa</h3>
             <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Informações obtidas automaticamente</p>
