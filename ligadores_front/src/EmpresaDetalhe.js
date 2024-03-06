@@ -139,7 +139,8 @@ function EmpresaDetalhe() {
                     <AtendimentoModal
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
-       
+                            cnpj={cnpj}
+
                     />
                 </div>
                 </dl>
