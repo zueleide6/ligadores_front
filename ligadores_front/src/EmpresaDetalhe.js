@@ -26,17 +26,7 @@ function EmpresaDetalhe() {
 
     const handleOpenModal = () => setIsModalOpen(true);
     const handleCloseModal = () => setIsModalOpen(false);
-  
-    const handleAddAtendimento = async (atendimento) => {
-        try {
-          await axios.post(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`, atendimento);
-          // Feche o modal
-          setIsModalOpen(false);
-          // Recarregue os atendimentos da empresa, se necessário
-        } catch (error) {
-          console.error("Erro ao adicionar atendimento", error);
-        }
-      };
+
     return (
         <div className='mx-auto max-w-7xl py-12 sm:px-6 lg:px-8 bg-stone-200 '>
         <div className="px-4 sm:px-0">
@@ -142,7 +132,7 @@ function EmpresaDetalhe() {
                     <AtendimentoModal
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
-                        onSubmit={handleAddAtendimento}
+       
                     />
                 </div>
                 </dl>
