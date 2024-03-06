@@ -1,27 +1,27 @@
 // AtendimentoModal.js
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const AtendimentoModal = ({ isOpen, onClose }) => {
- const [score, setScore] = useState('');
+  const [score, setScore] = useState('');
   const [status, setStatus] = useState('Pendente');
   const [anotacao, setAnotacao] = useState('');
 
-  // Manipulador para submeter o formulário
   const handleAddAtendimento = async (e) => {
-    e.preventDefault(); // Impede o comportamento padrão do formulário
+    e.preventDefault();
     try {
       await axios.post(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`, {
-        score: Number(score), // Certifique-se de converter o score para número
+        score: Number(score),
         status,
         Anotacao: anotacao,
       });
-      onClose(); // Chame onClose para fechar o modal
-      // Adicione aqui qualquer lógica adicional necessária após a criação do atendimento
+      onClose();
     } catch (error) {
       console.error("Erro ao adicionar atendimento", error);
     }
   };
 
+  if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-50 overflow-auto bg-smoke-light flex">
       <div className="relative p-8 bg-white w-full max-w-md m-auto flex-col flex rounded-lg">
