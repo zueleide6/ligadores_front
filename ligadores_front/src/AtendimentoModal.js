@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AtendimentoModal = ({ isOpen, onClose }) => {
+const AtendimentoModal = ({ cnpj,isOpen, onClose }) => {
   const [score, setScore] = useState('');
   const [status, setStatus] = useState('Pendente');
   const [anotacao, setAnotacao] = useState('');
