@@ -11,7 +11,8 @@ const AtendimentoModal = ({ cnpj,isOpen, onClose }) => {
     e.preventDefault();
 
     console.log('CNPJ DA JANELA MOIDAL:'+cnpj)
-    await axios.post(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`, {
+    await axios.post('https://coral-app-7ytww.ondigitalocean.app/empresa/atendimento/criar', {
+      cnpj,
         score: Number(score),
         status,
         Anotacao: anotacao,
