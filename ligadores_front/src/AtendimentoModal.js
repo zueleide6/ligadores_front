@@ -9,16 +9,14 @@ const AtendimentoModal = ({ cnpj,isOpen, onClose }) => {
 
   const handleAddAtendimento = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`, {
+
+    console.log(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`)
+    await axios.post(`https://coral-app-7ytww.ondigitalocean.app/empresa/${cnpj}/atendimento`, {
         score: Number(score),
         status,
         Anotacao: anotacao,
       });
-      onClose();
-    } catch (error) {
-      console.error("Erro ao adicionar atendimento", error);
-    }
+    onClose();
   };
 
   if (!isOpen) return null;
