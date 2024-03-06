@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Usado para navegação
 function EmpresaTable() {
   const [empresas, setEmpresas] = useState([]);
 
-  const navigate = useNavigate(); // Hook para navegar programaticamente
-
- 
+  const navigate = useNavigate(); // Hook para navegar programaticamente 
 
   // Função para navegar até a página de detalhes da empresa
   const handleRowClick = (cnpj) => {
