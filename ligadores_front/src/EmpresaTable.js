@@ -147,8 +147,8 @@ function EmpresaTable() {
               <td className="py-4 px-6">{empresa.capSocial}</td>
               <td className="py-4 px-6">{empresa.email}</td>
               <td className="py-4 px-6">{empresa.telefones}</td>
-              <td className="py-4 px-6">{empresa.atendimento?.status ?? 'Não Disponível'}</td>
-              <td className="py-4 px-6">{empresa.atendimento?.score ?? 'Não Disponível'}</td>
+              <td className="py-4 px-6">{empresa.atendimentos?.status ?? 'Não Disponível'}</td>
+              <td className="py-4 px-6">{empresa.atendimentos?.score ?? 'Não Disponível'}</td>
             </tr>
           ))}
         </tbody>
