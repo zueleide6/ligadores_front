@@ -23,22 +23,22 @@ function EmpresaTable() {
   const currentEmpresas = empresas
   .filter(empresa => {
     // Garante que status não seja undefined antes de chamar includes
-    const statusCondition = empresa.status ? empresa.status.includes(statusFilter) : false;
-    
+    const statusCondition = empresa.atendimentos.status ? empresa.atendimentos.status.includes(statusFilter) : false;
+    console.log("Empresa.atendimento"+empresa.atendimentos)
     let scoreCondition = true; // Assume true by default
     
     switch (scoreFilter) {
       case "<25":
-        scoreCondition = empresa.score < 25;
+        scoreCondition = empresa.atendimentos.score < 25;
         break;
       case "25-50":
-        scoreCondition = empresa.score >= 25 && empresa.score <= 50;
+        scoreCondition = empresa.atendimentos.score >= 25 && empresa.atendimentos.score <= 50;
         break;
       case "51-70":
-        scoreCondition = empresa.score >= 51 && empresa.score <= 70;
+        scoreCondition = empresa.atendimentos.score >= 51 && empresa.atendimentos.score <= 70;
         break;
       case ">70":
-        scoreCondition = empresa.score > 70;
+        scoreCondition = empresa.atendimentos.score > 70;
         break;
       default:
         // Mantém scoreCondition true para "Todos"
