@@ -28,6 +28,16 @@ function EmpresaTable() {
 
   return (
     <div className="container mx-auto">
+      <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">qtdade de registros</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{empresas.length}</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
       <table className="w-full table-auto text-sm text-left text-gray-900">
         <thead className="text-xs text-gray-900 uppercase bg-stone-500 bg-gray-300 ">
           <tr>
