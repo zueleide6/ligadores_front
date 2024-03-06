@@ -14,7 +14,7 @@ function EmpresaDetalhe() {
     const navigate = useNavigate(); // Hook para navegar programaticamente
     
     const handleClickVoltar = () => {
-        navigate(`/empresa`); // Ajuste a rota conforme necessário
+        navigate(`/`); // Ajuste a rota conforme necessário
     };
     
     const fetchData = async () => {
