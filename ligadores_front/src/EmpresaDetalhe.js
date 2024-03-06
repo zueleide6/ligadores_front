@@ -112,6 +112,7 @@ function EmpresaDetalhe() {
 
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                     <dt className="text-sm font-medium leading-6 text-gray-900">Atendimentos</dt>
+                     <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={handleOpenModal}>Adicionar Atendimento</button>   
                     <dd className="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
                     {atendimentos.length > 0 ?  atendimentos.map((atendimento) =>  (
                         <div className='divide-x divide-blue-600' >
@@ -135,7 +136,7 @@ function EmpresaDetalhe() {
                         <p>Nenhum atendimento encontrado.</p>
                       )}
                     </dd>
-                    <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={handleOpenModal}>Adicionar Atendimento</button>
+                    
                     <AtendimentoModal
                         isOpen={isModalOpen}
                         onClose={handleCloseModal}
