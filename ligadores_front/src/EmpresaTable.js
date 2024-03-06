@@ -22,11 +22,9 @@ function EmpresaTable() {
     };
 
     fetchEmpresas();
-  }, [banco]);
+  }, []);
 
-  const handleBancoChange = (event) => {
-    setBanco(event.target.value);
-  };
+
 
   return (
     <div className="container mx-auto">
@@ -56,8 +54,8 @@ function EmpresaTable() {
               <td className="py-4 px-6">{empresa.capSocial}</td>
               <td className="py-4 px-6">{empresa.email}</td>
               <td className="py-4 px-6">{empresa.telefones}</td>
-              <td className="py-4 px-6">{empresa.atendimentos?.status ?? 'Não Disponível'}</td>
-              <td className="py-4 px-6">{empresa.atendimentos?.score ?? 'Não Disponível'}</td>
+              <td className="py-4 px-6">{empresa.status }</td>
+              <td className="py-4 px-6">{empresa.score }</td>
             </tr>
           ))}
         </tbody>
